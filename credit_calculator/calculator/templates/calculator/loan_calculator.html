@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кредитный калькулятор</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Кредитный калькулятор</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_amount">Стоимость автомобиля:</label>
+                {{ form.amount }}
+            </div>
+            <div class="form-group">
+                <label for="id_down_payment">Первоначальный взнос:</label>
+                {{ form.down_payment }}
+            </div>
+            <div class="form-group">
+                <label for="id_residual_payment">Остаточный платеж:</label>
+                {{ form.residual_payment }}
+            </div>
+            <div class="form-group">
+                <label for="id_interest_rate">Процентная ставка:</label>
+                {{ form.interest_rate }}
+            </div>
+            <div class="form-group">
+                <label for="id_term">Срок кредита (в месяцах):</label>
+                {{ form.term }}
+            </div>
+            <div class="form-group">
+                <label for="id_payment_type">Тип ежемесячных платежей:</label>
+                {{ form.payment_type }}
+            </div>
+            <button type="submit" class="btn btn-primary">Рассчитать</button>
+        </form>
+    </div>
+</body>
+</html>

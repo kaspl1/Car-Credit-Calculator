@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кредитный калькулятор</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Кредитный калькулятор</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_amount">Стоимость автомобиля:</label>
+                {{ form.amount }}
+            </div>
+            <div class="form-group">
+                <label for="id_down_payment">Первоначальный взнос:</label>
+                {{ form.down_payment }}
+            </div>
+            <div class="form-group">
+                <label for="id_residual_payment">Остаточный платеж:</label>
+                {{ form.residual_payment }}
+            </div>
+            <div class="form-group">
+                <label for="id_interest_rate">Процентная ставка:</label>
+                {{ form.interest_rate }}
+            </div>
+            <div class="form-group">
+                <label for="id_term">Срок кредита (в месяцах):</label>
+                {{ form.term }}
+            </div>
+            <div class="form-group">
+                <label for="id_payment_type">Тип ежемесячных платежей:</label>
+                {{ form.payment_type }}
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Рассчитать</button>
+        </form>
+
+        {% if result %}
+        <h3 class="mt-5">Результаты расчёта:</h3>
+        <table class="table table-bordered mt-3">
+            <tr>
+                <th>Ежемесячный платеж</th>
+                <td>{{ result.annuity_payment }} руб.</td>
+            </tr>
+            <tr>
+                <th>Общая сумма выплат</th>
+                <td>{{ result.total_payment }} руб.</td>
+            </tr>
+            <tr>
+                <th>Общая переплата</th>
+                <td>{{ result.overpayment }} руб.</td>
+            </tr>
+            <tr>
+                <th>Общие проценты</th>
+                <td>{{ result.total_interest }} руб.</td>
+            </tr>
+        </table>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результаты расчета кредита</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Результаты расчета кредита</h1>
+
+        <!-- Таблица с результатами -->
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Параметр</th>
+                    <th>Значение</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Ежемесячный платеж</strong></td>
+                    <td>{{ annuity_payment|floatformat:2 }} руб.</td>
+                </tr>
+                <tr>
+                    <td><strong>Общая сумма выплат</strong></td>
+                    <td>{{ total_payment|floatformat:2 }} руб.</td>
+                </tr>
+                <tr>
+                    <td><strong>Переплата по кредиту</strong></td>
+                    <td>{{ overpayment|floatformat:2 }} руб.</td>
+                </tr>
+                <tr>
+                    <td><strong>Процент переплаты</strong></td>
+                    <td>{{ total_interest_percentage|floatformat:2 }}%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Кнопка назад -->
+        <div class="d-flex justify-content-center mt-4">
+            <a href="{% url 'loan_calculator' %}" class="btn btn-primary btn-lg">Назад к калькулятору</a>
+        </div>
+    </div>
+</body>
+</html>
