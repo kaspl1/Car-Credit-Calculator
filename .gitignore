@@ -14,7 +14,11 @@ dist/
 downloads/
 eggs/
 .eggs/
+<<<<<<< HEAD
 venv/Lib/
+=======
+lib/
+>>>>>>> e373d94b5c1a2e0dfdf649ab7f0448fa8a5d1e49
 lib64/
 parts/
 sdist/
@@ -159,4 +163,8 @@ cython_debug/
 #  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
+<<<<<<< HEAD
 #.idea/
+=======
+#.idea/
+>>>>>>> e373d94b5c1a2e0dfdf649ab7f0448fa8a5d1e49
