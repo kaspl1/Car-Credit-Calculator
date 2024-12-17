@@ -10,6 +10,8 @@
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Кредитный калькулятор</h1>
+
+        <!-- Форма для ввода данных -->
         <form method="post">
             {% csrf_token %}
             <div class="form-group">
@@ -38,6 +40,17 @@
             </div>
             <button type="submit" class="btn btn-primary">Рассчитать</button>
         </form>
+
+        <!-- Кнопки для выхода и просмотра истории -->
+        <div class="mt-4">
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Выйти</button>
+            </form>
+            <a href="{% url 'history' %}">
+                <button class="btn btn-secondary">История кредитов</button>
+            </a>
+        </div>
     </div>
 </body>
 </html>

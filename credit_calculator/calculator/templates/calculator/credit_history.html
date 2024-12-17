@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>История кредитов</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .credit-block {
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .credit-left, .credit-right {
+            width: 45%;
+        }
+        .credit-left {
+            padding-right: 20px;
+            border-right: 1px solid #ccc;
+        }
+        .credit-right {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">История кредитов</h1>
+
+        {% for credit in credit_list %}
+        <div class="credit-block">
+            <div class="credit-left">
+                <h3>Вводные данные</h3>
+                <p><strong>Сумма:</strong> {{ credit.amount }} руб.</p>
+                <p><strong>Ставка:</strong> {{ credit.interest_rate }}%</p>
+                <p><strong>Срок:</strong> {{ credit.term }} месяцев</p>
+            </div>
+            <div class="credit-right">
+                <h3>Результаты</h3>
+                <p><strong>Ежемесячный платеж:</strong> {{ credit.monthly_payment }} руб.</p>
+                <p><strong>Общая сумма:</strong> {{ credit.total_payment }} руб.</p>
+                <p><strong>Переплата:</strong> {{ credit.overpayment }} руб.</p>
+            </div>
+        </div>
+        {% endfor %}
+        <a href="{% url 'loan_calculator' %}">
+            <button class="btn btn-secondary">Вернуться к калькулятору</button>
+        </a>
+    </div>
+</body>
+</html>
